@@ -1,8 +1,19 @@
-# Simulation de Cyclogenèse Barocline en Rust
+# 🌪️ Simulation de Cyclogenèse Barocline en Rust
 
-Ce programme implémente une simulation de cyclogenèse barocline basée sur les concepts fondamentaux de la météorologie dynamique des moyennes latitudes.
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Rust](https://img.shields.io/badge/Rust-1.70%2B-orange.svg)](https://www.rust-lang.org)
 
-## Contexte Théorique
+Ce programme implémente une simulation de cyclogenèse barocline basée sur les concepts fondamentaux de la météorologie dynamique des moyennes latitudes, extraits du Tome 1 de "Concepts et Méthodes pour le météorologiste" de *Christophe Calas*.
+
+## 🎯 Fonctionnalités
+
+- Simulation de l'interaction barocline entre anomalies thermiques
+- Calcul des vitesses verticales et du tourbillon relatif
+- Prise en compte de l'effet de la latitude (force de Coriolis)
+- Validation complète des paramètres d'entrée
+- Gestion des erreurs avec types personnalisés
+
+## 🔬 Contexte Théorique
 
 ### Structure Barocline de l'Atmosphère
 
@@ -32,7 +43,7 @@ Le processus de cyclogenèse est modélisé à travers plusieurs composantes cl�
    - Intensification progressive avec le développement de la perturbation
    - Implémenté dans `compute_relative_vorticity`
 
-## Structure du Code
+## 💻 Structure du Code
 
 ### Constantes Physiques
 ```rust
@@ -52,39 +63,18 @@ pub struct Position {
 }
 ```
 
-### Simulation de l'Interaction Barocline
+## 🚀 Installation et Utilisation
 
-La classe `BaroclinicCyclogenesis` simule l'interaction entre :
-- Une anomalie de surface (chaude)
-- Une anomalie d'altitude (froide)
-- L'interaction est renforcée dans la zone barocline
+```bash
+# Cloner le repository
+git clone https://github.com/votre-username/cyclogenese-rust.git
+cd cyclogenese-rust
 
-## Paramètres de Simulation
+# Compiler et exécuter
+cargo run --release
+```
 
-- **Latitudes** : 30°N à 60°N
-- **Niveaux de pression** :
-  - Surface : 1013 hPa
-  - Altitude : 500 hPa
-- **Anomalies de température** :
-  - Surface : +5°K
-  - Altitude : -8°K
-
-## Résultats
-
-La simulation produit deux paramètres principaux :
-
-1. **Vitesses Verticales** :
-   - Unité : cm/s
-   - Augmentent avec la latitude
-   - S'intensifient avec le temps
-
-2. **Tourbillon Relatif** :
-   - Unité : 10⁻⁵ s⁻¹
-   - Plus fort aux latitudes élevées
-   - Développement progressif
-
-## Utilisation
-
+### Exemple d'utilisation dans le code
 ```rust
 // Création d'une nouvelle simulation
 let mut cyclogenesis = BaroclinicCyclogenesis::new(5.0, -8.0, 45.0)?;
@@ -98,7 +88,29 @@ for result in results {
 }
 ```
 
-## Validation et Gestion des Erreurs
+## 📊 Paramètres et Résultats
+
+### Paramètres de Simulation
+- **Latitudes** : 30°N à 60°N
+- **Niveaux de pression** :
+  - Surface : 1013 hPa
+  - Altitude : 500 hPa
+- **Anomalies de température** :
+  - Surface : +5°K
+  - Altitude : -8°K
+
+### Résultats Produits
+1. **Vitesses Verticales** :
+   - Unité : cm/s
+   - Augmentent avec la latitude
+   - S'intensifient avec le temps
+
+2. **Tourbillon Relatif** :
+   - Unité : 10⁻⁵ s⁻¹
+   - Plus fort aux latitudes élevées
+   - Développement progressif
+
+## ⚡ Validation et Gestion des Erreurs
 
 Le code inclut une validation complète des paramètres d'entrée :
 - Latitudes valides : -90° à +90°
@@ -108,12 +120,14 @@ Le code inclut une validation complète des paramètres d'entrée :
 
 Les erreurs sont gérées via un type personnalisé `MeteoError`.
 
-## Notes
+## 📖 Notes Pédagogiques
 
-j'ai conçu ce programme comme un mémo et une mise en pratique des notions suivantes :
+Ce programme a été conçu comme un mémo et une mise en pratique des notions suivantes :
 1. Les mécanismes fondamentaux de la cyclogenèse barocline
 2. L'interaction entre les différentes couches atmosphériques
 3. L'influence de la latitude sur le développement des dépressions
 4. L'importance de la structure thermique dans la dynamique atmosphérique
 
-Toutes les informations sont disponibles dans le Tome 1 de `Concepts et Méthodes pour le météorologiste` de *Christophe Calas*.
+## 📝 License
+
+Ce projet est sous licence GNU GPL v3 - voir le fichier [LICENSE](LICENSE) pour plus de détails.

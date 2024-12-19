@@ -67,7 +67,7 @@ pub struct Position {
 
 ```bash
 # Cloner le repository
-git clone https://github.com/votre-username/cyclogenese-rust.git
+git clone https://github.com/LukaChassaing/cyclogenese-rust.git
 cd cyclogenese-rust
 
 # Compiler et exécuter
